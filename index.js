@@ -46,7 +46,7 @@ const showCategoryNews = (news, name) => {
                         <h5 class="card-title">${singleNews.title}</h5>
                         <span class="badge text-bg-warning">${singleNews.others_info.is_trending ? "Trending" : ""}</span>
                         <p class="card-text pt-2">${singleNews.details.slice(0, 200)}...</p>
-                        <button class="mt-4 btn btn-outline-dark rounded-0 px-5">Details</button>
+                        <button class="mt-4 btn btn-outline-dark rounded-0 px-5" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="fetchDetails('${singleNews?._id}')">Details</button>
                     </div>
                 </div>
             </div>
@@ -54,6 +54,26 @@ const showCategoryNews = (news, name) => {
         `;
         container.appendChild(div);
     })
+}
+// details
+const fetchDetails = (id) => {
+    const URL = `https://openapi.programming-hero.com/api/news/${id}`;
+    fetch(URL)
+    .then(res => res.json())
+    .then(data => showDetails(data.data[0]));
+}
+// show details
+const showDetails = (news) => {
+    const {image_url, title, details} = news;
+    document.getElementById('content').innerHTML = `
+        <div class="card mb-3">
+            <img src="${image_url}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${title}</h5>
+                <p class="card-text">${details}</p>
+            </div>
+        </div>
+    `;
 }
 
 
