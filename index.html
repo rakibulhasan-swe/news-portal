@@ -11,30 +11,107 @@
       crossorigin="anonymous"
     ></script>
     <!-- google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2? family=Great+Vibes&family=Montserrat:wght@100;200;300;400;500;600;700;800&family=Ope n+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700; 800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2? family=Great+Vibes&family=Montserrat:wght@100;200;300;400;500;600;700;800&family=Ope n+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700; 800&display=swap"
+      rel="stylesheet"
+    />
     <!-- bootstrap cdn  -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0- 
-       alpha1/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
     />
 
     <style>
-        body{
-            font-family: 'Montserrat', sans-serif;
-        }
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
     </style>
   </head>
-  <body>
+  <body onload="loadCategories()">
+    <header class="container-fluid m-0 p-0">
+      <!-- Navbar goes here -->
+      <nav class="navbar navbar-expand-lg bg-transparent">
+        <div class="container">
+          <a class="navbar-brand" href="#"
+            ><button class="btn btn-primary rounded-0 px-4 me-2">News</button>
+            Portal</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarNavAltMarkup"
+          >
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="#">News</a>
+              <a class="nav-link" href="#">Blogs</a>
+              <a class="nav-link" href="#"
+                ><img src="./assets/Avatar.png" alt=""
+              /></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <hr class="container" />
+      <!-- news categories -->
+      <section
+        class="container categories-container d-flex justify-content-between"
+        id="categories-container"
+      ></section>
+    </header>
 
+    <main>
+      <!-- alert section -->
+      <section class="container py-4">
+        <div class="alert alert-secondary" role="alert">
+          <p>
+            <span id="items">0</span> items found for category
+            <span id="category"></span>
+          </p>
+        </div>
+      </section>
+      <!-- sorting options section -->
+      <section class="container d-flex justify-content-between my-4" id="">
+        <div class="d-flex justify-content-center align-items-center gap-2">
+          <p class="p-0 m-0">Sort By:</p>
 
-
-
-
-
+          <div>
+            <select
+              class="form-select"
+              id="floatingSelect"
+              aria-label="Floating label select example"
+            >
+              <option selected>Default</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-primary rounded-0">Todays pick</button>
+          <button class="btn btn-outline-danger rounded-0">Trending</button>
+        </div>
+      </section>
+      <!-- sorting options section ends -->
+      <!-- news -->
+      <scetion class="container">
+        <div class="row" id="news"></div>
+      </scetion>
+    </main>
 
     <script src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
